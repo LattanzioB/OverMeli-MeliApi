@@ -20,9 +20,8 @@ async function main(){
 */
 const routes = new UserProductRouter();
 
-console.log(url)
 
-mongoose.connect(clurl) //Web: clurl //docker: url
+mongoose.connect(url) //Web: clurl //docker: url
 .then(async ()=> {
   console.log('Database Connected')
   await UserProductModel.deleteMany({});
