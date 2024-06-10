@@ -1,10 +1,13 @@
 const axios = require("axios");
 const {TokenService} = require("../service/token_service")
+const {ProductService} = require("../service/product_service")
+
 
 class ProductController{
     
     constructor(){
         this._tokenService = new TokenService();
+        this._productService = new ProductService();
     }
 
     async search_product(req, res) {
@@ -20,8 +23,7 @@ class ProductController{
 
         try {
             const response = await axios.get(url, { params, headers: header });
-            console.log(response.data);
-            return res.status(200).json(response.data); // Send the data as JSON response
+            return res.status(200).json(this._productService.parseDataProduct(response.data)); // Send the data as JSON response
         } catch (error) {
             // Handle errors here
             console.error('Error in search product request:', error);

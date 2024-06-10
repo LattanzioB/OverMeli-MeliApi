@@ -1,3 +1,57 @@
+
+
+
+class ProductService{
+
+    parseDataProduct(productJson){
+        const products = []
+        productJson.results.forEach(product => {
+            if (product.status == "active"){
+                products.push({
+                    "productId": product.id,
+                    "productName": product.name,
+                    "pictures": product.pictures
+                })
+            }
+        });
+        console.log(products)
+        return products
+    }
+
+}
+
+
+
+module.exports = {ProductService};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
 const { MongoClient } = require("mongodb");
 
 async function main(functionp, ...params) {
@@ -28,7 +82,7 @@ async function findOneProductgByName(client, nameOfProduct) {
     }
 }
 
-/*
+
 async function findOneProductgBetweenRates(client, minorRate, mayorRate) {
     const result = await client.db("sample_airbnb").collection("listingsAndReviews").find(
         {
@@ -44,7 +98,7 @@ async function findOneProductgBetweenRates(client, minorRate, mayorRate) {
     }
 }
 
-*/
+
 
 async function listDatabases(client){
     const dabasesList = await client.db().admin().listDatabases();
@@ -66,7 +120,7 @@ const product = {
 
 //main(findOneProductgBetweenRates, 4, 5).catch(console.error);
 
-
+*/
 
 
 
