@@ -1,4 +1,4 @@
-const {axios} = require("axios");
+const axios = require("axios");
 
 class TokenController{
     
@@ -8,17 +8,17 @@ class TokenController{
             'client_id': '275195427390645',
             'client_secret': 'cMmJPpuM8oCgEpOQFguKNqgbL6l9PqGi',
             //en un futuro pasar el code a token_service para actualizacion automatica
-            'code': 'TG-6611a5283cbba900011dae6c-165015102',
+            'code': 'TG-667094f00817f80001072822-165015102',
             'redirect_uri': 'https://localhost/overmeli'
         }
-
+//https://auth.mercadolibre.com.ar/authorization?response_type=code&client_id=275195427390645&redirect_uri=https://localhost/overmeli
 
         const url = 'https://api.mercadolibre.com/oauth/token';
 
         try {
             const response = await axios.post(url, body );
 
-            let token = 'Bearer' + response.data.access_token;
+            let token = 'Bearer ' + response.data.access_token;
             tokenService.set_token(token)
             console.log(token)
             return 'completo';

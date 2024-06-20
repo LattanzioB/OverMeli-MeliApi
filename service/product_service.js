@@ -4,17 +4,18 @@
 class ProductService{
 
     parseDataProduct(productJson){
-        const products = []
+
+        const products = {}
         productJson.results.forEach(product => {
-            if (product.status == "active"){
-                products.push({
+            if(product.id){
+                products[product.id] = {
                     "productId": product.id,
-                    "productName": product.name,
-                    "pictures": product.pictures
-                })
+                    "productName": product.title,
+                    "condition": product.condition,
+                    "price": product.price
+                }
             }
         });
-        console.log(products)
         return products
     }
 
