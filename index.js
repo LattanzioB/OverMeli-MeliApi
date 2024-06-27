@@ -8,6 +8,8 @@ const {UserProductRouter} = require("./routes/user_product_routes")
 const {url, rwurl,clurl, port} = require('./config.js')
 const {specs} = require('./swagger_config');
 const swaggerUi = require("swagger-ui-express");
+const cors = require('cors');
+const corsOptions = require('./cors-options');
 
 const routes = new UserProductRouter();
 
@@ -23,6 +25,7 @@ mongoose.connect(rwurl) //Web: clurl //docker: url
 
 const app = express();
 
+app.use(cors(corsOptions));
 app.use(express.json())
 app.use(cookieParser())
 app.use(express.urlencoded({extended: false}))

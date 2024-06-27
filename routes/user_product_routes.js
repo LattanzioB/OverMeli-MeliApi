@@ -1,6 +1,5 @@
 const express = require('express');
 
-const cors = require('cors');
 const {UserProductController} = require('../controller/user_product_controller')
 const {ProductController} = require('../controller/product_controller')
 /**
@@ -141,13 +140,7 @@ class UserProductRouter {
         this.user_product_router = express.Router();
         this.user_product_controller = new UserProductController();
         this.product_controller = new ProductController();
-        this.p
-        this.user_product_router.use(
-            cors({
-                credentials: true,
-                origin: 'http://localhost:8090'
-            })
-        )
+
         this.user_product_router.post('/register_user_product', (req, res) => this.user_product_controller.saveUserProduct(req, res))
         this.user_product_router.get('/searchProduct', (req, res) => this.product_controller.search_product(req, res))
         this.user_product_router.get('/productsLikedBy', (req, res) => this.user_product_controller.liked_products(req, res))
