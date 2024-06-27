@@ -12,7 +12,7 @@ const swaggerUi = require("swagger-ui-express");
 const routes = new UserProductRouter();
 
 
-mongoose.connect(clurl) //Web: clurl //docker: url
+mongoose.connect(rwurl) //Web: clurl //docker: url
 .then(async ()=> {
   console.log('Database Connected')
   await UserProductModel.deleteMany({});
