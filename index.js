@@ -5,7 +5,7 @@ const express = require('express');
 const cookieParser = require('cookie-parser');
 const {UserProductModel} = require("./model/user_product_model");
 const {UserProductRouter} = require("./routes/user_product_routes") 
-const {url, rwurl,clurl} = require('./config.js')
+const {url, rwurl,clurl, port} = require('./config.js')
 const {specs} = require('./swagger_config');
 const swaggerUi = require("swagger-ui-express");
 
@@ -33,8 +33,6 @@ app.use(
   swaggerUi.setup(specs, { explorer: true })
 );
 
-
-const port = 8010;
 app.listen(port, ()=> console.log(`server is running on port ${port}`))
 
 
