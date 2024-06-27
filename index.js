@@ -8,16 +8,7 @@ const {UserProductRouter} = require("./routes/user_product_routes")
 const {url, rwurl,clurl} = require('./config.js')
 const {specs} = require('./swagger_config');
 const swaggerUi = require("swagger-ui-express");
-/*
-const token_service = new TokenService();
-const product_controller = new ProductController(token_service);
 
-
-async function main(){
-    await token_service.update_token();
-    await product_controller.first_call();
-}
-*/
 const routes = new UserProductRouter();
 
 
