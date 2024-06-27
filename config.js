@@ -19,6 +19,6 @@ const port = PORT
 module.exports = {
     url,
     rwurl,
-    
-    clurl
+    clurl,
+    port
 };
