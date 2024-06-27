@@ -8,7 +8,7 @@ class TokenController{
             'client_id': '275195427390645',
             'client_secret': 'cMmJPpuM8oCgEpOQFguKNqgbL6l9PqGi',
             //en un futuro pasar el code a token_service para actualizacion automatica
-            'code': 'TG-667cbf21ef9e9d0001f962f1-165015102',
+            'code': 'TG-667cc34101ebb80001b6b814-165015102',
             'redirect_uri': 'https://localhost/overmeli'
         }
 //https://auth.mercadolibre.com.ar/authorization?response_type=code&client_id=275195427390645&redirect_uri=https://localhost/overmeli
