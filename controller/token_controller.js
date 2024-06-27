@@ -7,7 +7,7 @@ class TokenController{
             'grant_type': 'refresh_token',
             'client_id': '275195427390645',
             'client_secret': 'cMmJPpuM8oCgEpOQFguKNqgbL6l9PqGi',
-            'code': 'TG-667cc34101ebb80001b6b814-165015102',
+            'refresh_token': 'TG-667cc34101ebb80001b6b814-165015102',
         }
 //https://auth.mercadolibre.com.ar/authorization?response_type=code&client_id=275195427390645&redirect_uri=https://localhost/overmeli
 
