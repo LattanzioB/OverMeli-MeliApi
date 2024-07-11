@@ -5,18 +5,22 @@ class UserProductService {
     async saveUserProduct(_user, _product, _productName, _rate, _comment) {
         try {
             const query = UserProductModel.where({ user: _user, productId: _product });
-            const exist = await query.findOne();
-            if (exist) {
-                throw new Error('Product already rated');
+            let userProduct = await query.findOne();
+            if (userProduct) {
+                userProduct.rate = _rate;
+                userProduct.comment = _comment;
+                await userProduct.save();
+            } else {
+                userProduct = await UserProductModel.create({
+                    user: _user,
+                    productId: _product,
+                    productName: _productName,
+                    rate: _rate,
+                    comment: _comment 
+                });
             }
-            const userCreated = await UserProductModel.create({
-                user: _user,
-                productId: _product,
-                productName: _productName,
-                rate: _rate,
-                comment: _comment 
-            });
-            return userCreated;
+           
+            return userProduct;
     
         } catch (error) {
             console.log(error);
@@ -42,6 +46,44 @@ class UserProductService {
             throw error;
             //return res.status(500).json({ error: 'Internal server error' });
         }
+    }
+
+
+    async getUsersLikedProductsAVG(){
+        try {
+            const query = await UserProductModel.find({}).exec();
+
+            return this.averageRateByProduct(query);
+        } catch (error) {
+            console.log(error);
+            throw error;
+            //return res.status(500).json({ error: 'Internal server error' });
+        }
+    }
+
+    averageRateByProduct(data){
+        const productRates = {};
+
+        data.forEach(review => {
+            const productId = review.productId;
+            const productName = review.productName;
+            const rate = parseInt(review.rate, 10);
+
+            if (!productRates[productId]) {
+                productRates[productId] = { productId, productName, totalRate: 0, count: 0 };
+            }
+
+            productRates[productId].totalRate += rate;
+            productRates[productId].count += 1;
+        });
+        console.log(productRates)
+        const result = Object.values(productRates).map(product => ({
+            productId: product.productId,
+            productName: product.productName,
+            rate: (product.totalRate / product.count).toFixed(2)
+        }));
+
+        return result;
     }
 }
 

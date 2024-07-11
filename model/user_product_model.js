@@ -4,11 +4,11 @@ const { Schema } = mongoose;
 const userProductSchema = new Schema({
     user: {
         type: String,
-        required: true  // `user` is required
+        required: true 
     },
     productId: {
         type: String,
-        required: true  // `productId` is required
+        required: true  
     },
     productName: {
         type: String,
@@ -24,9 +24,7 @@ const userProductSchema = new Schema({
     }
 });
 
-// Create a compound index for `productId` and `user`
-userProductSchema.index({ productId: 1, user: 1 }, { unique: true });
 
-const UserProductModel = mongoose.model('UserProduct', userProductSchema);
+const UserProductModel = mongoose.model('UserProduct_', userProductSchema);
 
 module.exports = { UserProductModel };

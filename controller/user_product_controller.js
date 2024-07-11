@@ -30,6 +30,16 @@ class UserProductController {
             return res.status(500).json({ error: 'Internal server error' });
         }
     }
+
+    async liked_products_avg(req, res){
+        const user = req.query.user; 
+        try {
+            const usersAVGLikes = await this._userProductService.getUsersLikedProductsAVG()
+            return res.status(200).json(usersAVGLikes);
+        } catch (error) {
+            return res.status(500).json({ error: 'Internal server error' });
+        }
+    }
 }
 
 

@@ -2,7 +2,7 @@ const allowedOrigins = [
   'https://overmeli-fronted-production.up.railway.app',  // Production frontend URL
   'https://overmeli-loginapi-production.up.railway.app',
   'http://localhost:8090',
-  'http://localhost:8000',
+  'http://localhost:8010',
   'https://over-meli-fronted.vercel.app'  
 ];
 

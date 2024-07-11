@@ -133,6 +133,34 @@ const {ProductController} = require('../controller/product_controller')
  *                         description: The product price
  *       500:
  *         description: Some server error
+  * /productsLikedAVG:
+ *   get:
+ *     summary: Search for products average rates
+ *     tags: [UserProduct]
+ *     responses:
+ *       200:
+ *         description: A list of products id, names and average rate
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 products:
+ *                   type: array
+ *                   items:
+ *                     type: object
+ *                     properties:
+ *                       id:
+ *                         type: string
+ *                         description: The product ID
+ *                       title:
+ *                         type: string
+ *                         description: The product title
+ *                       rate:
+ *                         type: number
+ *                         description: The products rate
+ *       500:
+ *         description: Some server error
  */
 
 class UserProductRouter {
@@ -144,6 +172,7 @@ class UserProductRouter {
         this.user_product_router.post('/register_user_product', (req, res) => this.user_product_controller.saveUserProduct(req, res))
         this.user_product_router.get('/searchProduct', (req, res) => this.product_controller.search_product(req, res))
         this.user_product_router.get('/productsLikedBy', (req, res) => this.user_product_controller.liked_products(req, res))
+        this.user_product_router.get('/productsLikedAVG', (req, res) => this.user_product_controller.liked_products_avg(req, res))
     }
 //query = 'Samsung 20 Galaxy S8 64 GB rosa'
     get_routes() {
