@@ -14,7 +14,7 @@ const corsOptions = require('./cors-options');
 const routes = new UserProductRouter();
 
 
-mongoose.connect(rwurl) //Web: clurl //docker: url
+mongoose.connect(url) //Web: clurl //docker: url
 .then(async ()=> {
   console.log('Database Connected')
   await UserProductModel.deleteMany({});
